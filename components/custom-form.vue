@@ -28,7 +28,7 @@
                     </v-col>
                 </v-col>
                 <v-col cols="6">
-                    <custom-form />
+                    <custom-table />
                 </v-col>
 
             </v-row>
@@ -38,7 +38,11 @@
 </template>
 
 <script>
+import customTable from './custom-table.vue';
 export default {
+    components: {
+        customTable
+    },
     data() {
         return {
             valid: false,
