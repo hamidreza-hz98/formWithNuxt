@@ -29,29 +29,9 @@
 export default {
     data() {
         return {
-            tableData: [
-                {
-                    fullName: 'Hamidreza Hassnazadeh',
-                    phoneNumber: '09153456486',
-                    email: 'hamidreza@matican.com'
-                },
-                {
-                    fullName: 'Ali Azimi',
-                    phoneNumber: '09155386486',
-                    email: 'ali@matican.com'
-                },
-                {
-                    fullName: 'Daniel Azimi',
-                    phoneNumber: '09155562486',
-                    email: 'Daniel@matican.com'
-                },
-                {
-                    fullName: 'Adriana Nahaani',
-                    phoneNumber: '0915347778',
-                    email: 'Adriana@matican.com'
-                },
+            props: ['params'],
+            tableData: [],
 
-            ],
         }
     },
 

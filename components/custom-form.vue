@@ -2,7 +2,7 @@
     <v-form v-model="valid" @submit.prevent="handleSubmit">
         <v-container>
             <v-row>
-                <v-col cols="6">
+                <v-col cols="5">
                     <v-col cols="12" md="4">
                         <v-text-field v-model="firstName" :rules="nameRules" label="First name" required>
                         </v-text-field>
@@ -27,7 +27,7 @@
                         </v-btn>
                     </v-col>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="7">
                     <custom-table />
                 </v-col>
 
@@ -65,6 +65,11 @@ export default {
     methods: {
         handleSubmit(event) {
             event.preventDefault();
+            var params = {
+                fullName: this.firstName + " " + this.lastName,
+                phoneNumber: this.phoneNumber,
+                email: this.email,
+            }
         }
     }
 }
