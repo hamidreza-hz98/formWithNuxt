@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import customTable from '../components/custom-table.vue'
+import customForm from '../components/custom-form.vue'
 export default {
   name: 'indexPage',
   components: {
-    customTable
+    customForm
   }
 }
 </script>

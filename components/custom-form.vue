@@ -1,5 +1,5 @@
 <template>
-    <v-form v-model="valid" @submit.prevent="handleSubmit">
+    <v-form v-model="valid" ref="from" @submit.prevent="handleSubmit">
         <v-container>
             <v-row>
                 <v-col cols="5">
@@ -28,7 +28,8 @@
                     </v-col>
                 </v-col>
                 <v-col cols="7">
-                    <custom-table />
+                    <v-data-table :headers="headers" :items="items" :items-per-page="5" class="elevation-1" dark>
+                    </v-data-table>
                 </v-col>
 
             </v-row>
@@ -38,13 +39,16 @@
 </template>
 
 <script>
-import customTable from './custom-table.vue';
 export default {
-    components: {
-        customTable
-    },
+
     data() {
         return {
+            headers: [
+                { text: 'Full Name', align: 'start', value: 'fullName' },
+                { text: 'Phone No.', value: 'phoneNumber' },
+                { text: 'E-mail', value: 'email' },
+            ],
+            items: [],
             valid: false,
             firstName: '',
             lastName: '',
@@ -63,15 +67,28 @@ export default {
         }
     },
     methods: {
-        handleSubmit(event) {
-            event.preventDefault();
+        handleSubmit() {
             var params = {
                 fullName: this.firstName + " " + this.lastName,
                 phoneNumber: this.phoneNumber,
                 email: this.email,
             }
-        }
-    }
+            this.items.push(params)
+            this.resetForm()
+            this.resetValidation()
+        },
+        resetForm() {
+            this.valid = false
+            this.firstName = ''
+            this.lastName = ''
+            this.phoneNumber = ''
+            this.email = ''
+        },
+        resetValidation() {
+            this.$refs.from.resetValidation()
+        },
+
+    },
 }
 </script>
 
